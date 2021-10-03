@@ -1,0 +1,14 @@
+digraph G{
+node[color="blue",style="rounded,filled",fillcolor=lightyellow, shape=record];
+node27305320[label="<f0>|<f1> Carnet: 4\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305248[label="<f0>|<f1>Carnet: 2\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305320:f0->node27305248:<f1>
+node27304912[label="<f0>|<f1>Carnet: 1\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305248:f0->node27304912:<f1>
+node27305200[label="<f0>|<f1>Carnet: 3\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305248:f2->node27305200:<f1>
+node27305584[label="<f0>|<f1>Carnet: 5\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305320:f2->node27305584:<f1>
+node27306688[label="<f0>|<f1>Carnet: 6\nNombre: nombre\nCarrera: carrera|<f2>"];
+node27305584:f2->node27306688:<f1>
+}

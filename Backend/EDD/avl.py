@@ -1,3 +1,4 @@
+import os
 from typing import no_type_check_decorator
 
 
@@ -16,9 +17,11 @@ class nodoAVL:
         self.right=None
         self.altura=0
 
+
 class AVL:
     def __init__(self):
         self.root = None
+        self.cadena = ""
     
     def max(self, val1,val2):
         if val1>val2:
@@ -93,6 +96,29 @@ class AVL:
             self.preorden_intern(root.left)
             self.preorden_intern(root.right)
 
+    def generar(self):
+        f = open('dotArbolAVL.dot', 'w', encoding='utf-8')
+        self.cadena+="digraph G{\n"
+        self.cadena+="node[color=\"blue\",style=\"rounded,filled\",fillcolor=lightyellow, shape=record];\n"
+        if self.root is not None:
+            self.cadena+="node"+str(id(self.root))+"[label=\"<f0>|<f1> Carnet: "+ str(self.root.nCarnet)+ "\\nNombre: "+self.root.nombre+ "\\nCarrera: "+self.root.carrera+ "|<f2>\"];\n"
+            self.generar2( self.root, self.root.left, True)
+            self.generar2( self.root, self.root.right, False)
+        self.cadena+="}\n"
+        f.write(self.cadena)
+        f.close()
+        os.system('dot -Tpng dotArbolAVL.dot -o sArbolAVL.png')
+
+    def generar2(self, padre, actual, izquierda):
+        if actual is not None:
+            self.cadena += "node" + str(id(actual)) +"[label=\"<f0>|<f1>Carnet: "+ str(actual.nCarnet)+ "\\nNombre: "+actual.nombre+ "\\nCarrera: "+actual.carrera+ "|<f2>\"];\n"
+            if izquierda:
+                self.cadena +="node"+str(id(padre))+":f0->node"+str(id(actual))+":<f1>\n"
+            else:
+                self.cadena += "node" + str(id(padre)) + ":f2->node" + str(id(actual)) + ":<f1>\n"
+            self.generar2(actual,actual.left,True)
+            self.generar2(actual,actual.right,False)
+
 
 def pruebas():
     arbol = AVL()
@@ -103,5 +129,6 @@ def pruebas():
     arbol.insert( 5, "000000", "nombre", "carrera", "correo", "password", 30, 20, None)
     arbol.insert( 6, "000000", "nombre", "carrera", "correo", "password", 30, 20, None)
     arbol.preorden()
+    arbol.generar()
 
 pruebas()
