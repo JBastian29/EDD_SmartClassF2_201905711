@@ -1,4 +1,4 @@
-from NodoDoble import nodoDoble
+from EDD.ArbolB.NodoDoble import nodoDoble
 class listaDoble:
     def __init__(self):
         self.primero=None

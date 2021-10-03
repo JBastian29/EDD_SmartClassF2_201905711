@@ -1,5 +1,5 @@
-from ListaPuntero import listaPuntero
-from ListaDoble import listaDoble
+from EDD.ArbolB.ListaPuntero import listaPuntero
+from EDD.ArbolB.ListaDoble import listaDoble
 
 class paginaB:
     def __init__(self):

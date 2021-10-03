@@ -1,4 +1,4 @@
-from NodoPuntero import nodoPuntero
+from EDD.ArbolB.NodoPuntero import nodoPuntero
 class listaPuntero:
     def __init__(self):
         self.primero=None

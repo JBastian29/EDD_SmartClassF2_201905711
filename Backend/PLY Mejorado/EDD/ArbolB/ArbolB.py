@@ -1,5 +1,7 @@
-from PaginaB import paginaB
-from compareTo import compareTo
+import time
+
+from EDD.ArbolB.PaginaB import paginaB
+from EDD.ArbolB.compareTo import compareTo
 import os
 
 
@@ -179,17 +181,17 @@ class arbolB:
             self.preOrden2(pagina.getApuntador(3))
             self.preOrden2(pagina.getApuntador(4))
 
-    def graficar(self):
-        f = open('dotArbolB.dot', 'w', encoding='utf-8')
+    def graficar(self,name):
+        f = open('dotArbolB'+name+'.dot', 'w', encoding='utf-8')
         self.grafica = "digraph ArbolB{\n"
         self.grafica += "\nrankdir=TB;\n"
-        self.grafica += "node[color=\"blue\",style=\"rounded,filled\",fillcolor=lightgray, shape=record];\n"
+        self.grafica += "node[color=\"blue\",style=\"rounded,filled\",fillcolor=lightyellow, shape=record];\n"
         self.graficar2(self.Raiz)
         self.graficar3(self.Raiz)
         self.grafica+="\n}\n"
         f.write(self.grafica)
         f.close()
-        os.system('dot -Tpng dotArbolB.dot -o sArbolB.png')
+        os.system('dot -Tpng dotArbolB'+name+'.dot -o sArbolB'+name+'.png')
 
     def graficar2(self, pagina):
         contador=0
@@ -240,7 +242,7 @@ class arbolB:
             self.graficar3(pagina.getApuntador(3))
             self.graficar3(pagina.getApuntador(4))
 
-btree = arbolB()
+"""btree = arbolB()
 btree.insertarDatos(100, "Guatemala",2,"No","Si")
 btree.insertarDatos(110, "Noruega",2,"No","Si")
 btree.insertarDatos(120, "Alemania",2,"No","Si")
@@ -267,5 +269,5 @@ btree.insertarDatos(410, "Australia",2,"No","Si")
 btree.insertarDatos(420, "Tailandia",2,"No","Si")
 btree.insertarDatos(430, "Australia",2,"No","Si")
 btree.insertarDatos(440, "Australia",2,"No","Si")
-btree.graficar()
+btree.graficar()"""
 

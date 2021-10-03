@@ -96,6 +96,16 @@ class AVL:
             self.preorden_intern(root.left)
             self.preorden_intern(root.right)
 
+    def seek(self,raiz,abuscar):
+        if raiz==None:
+            return print("Valor no encontrado")
+        elif abuscar == raiz.nCarnet:
+            return raiz
+        elif abuscar < raiz.nCarnet:
+            return self.seek(raiz.left,abuscar)
+        elif abuscar > raiz.nCarnet:
+            return self.seek(raiz.right, abuscar)
+
     def generar(self):
         f = open('dotArbolAVL.dot', 'w', encoding='utf-8')
         self.cadena+="digraph G{\n"
@@ -108,6 +118,7 @@ class AVL:
         f.write(self.cadena)
         f.close()
         os.system('dot -Tpng dotArbolAVL.dot -o sArbolAVL.png')
+        os.system('sArbolAVL.png')
 
     def generar2(self, padre, actual, izquierda):
         if actual is not None:
@@ -129,6 +140,6 @@ def pruebas():
     arbol.insert( 5, "000000", "nombre", "carrera", "correo", "password", 30, 20, None)
     arbol.insert( 6, "000000", "nombre", "carrera", "correo", "password", 30, 20, None)
     arbol.preorden()
-    arbol.generar()
+    print(arbol.seek(arbol.root,6).nombre)
+#pruebas()
 
-pruebas()
