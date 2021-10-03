@@ -1,0 +1,38 @@
+digraph ArbolB{
+
+rankdir=TB;
+node[color="blue",style="rounded,filled",fillcolor=lightgray, shape=record];
+
+Nodo180[label="<f0> |<f1>180\nCorea del Sur|<f2> |<f3>270\nChina|<f4>  ",group=0];
+
+Nodo120[label="<f0> |<f1>120\nAlemania|<f2> |<f3>150\nJapon|<f4>  ",group=0];
+
+Nodo100[label="<f0> |<f1>100\nGuatemala|<f2> |<f3>110\nNoruega|<f4>  ",group=0];
+
+Nodo130[label="<f0> |<f1>130\nSuiza|<f2> |<f3>140\nFrancia|<f4>  ",group=0];
+
+Nodo160[label="<f0> |<f1>160\nChina|<f2> |<f3>170\nSingapour|<f4>  ",group=0];
+
+Nodo210[label="<f0> |<f1>210\nGuatemala|<f2> |<f3>240\nSuiza|<f4>  ",group=0];
+
+Nodo190[label="<f0> |<f1>190\nTailandia|<f2> |<f3>200\nAustralia|<f4>  ",group=0];
+
+Nodo250[label="<f0> |<f1>250\nFrancia|<f2> |<f3>260\nJapon|<f4>  ",group=0];
+
+Nodo300[label="<f0> |<f1>300\nTailandia|<f2> |<f3>420\nTailandia|<f4>  ",group=0];
+
+Nodo280[label="<f0> |<f1>280\nSingapour|<f2> |<f3>290\nCorea del Sur|<f4>  ",group=0];
+
+Nodo430[label="<f0> |<f1>430\nAustralia|<f2> |<f3>440\nAustralia|<f4>  ",group=0];
+
+Nodo180:f0->Nodo120
+Nodo180:f2->Nodo210
+Nodo180:f4->Nodo300
+Nodo120:f0->Nodo100
+Nodo120:f2->Nodo130
+Nodo120:f4->Nodo160
+Nodo210:f0->Nodo190
+Nodo210:f4->Nodo250
+Nodo300:f0->Nodo280
+Nodo300:f4->Nodo430
+}
