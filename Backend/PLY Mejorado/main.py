@@ -50,26 +50,15 @@ def carga():
                             print("Estamos en semestre: " + semes['Semestre'])
                             for cursos in semes['Cursos']:
                                 BtreeCursosEstu.insertarDatos(int(cursos['Codigo']),cursos['Nombre'],cursos['Creditos'],cursos['Prerequisitos'],cursos['Obligatorio'])
-                            print("Pre orden datos de arbol B")
-                            BtreeCursosEstu.preOrden()
                             print("Se va agregar en semestre: "+ str(semes['Semestre']))
                             listaSemes.add_Semestres(semes['Semestre'], BtreeCursosEstu)
                         listaAños.add_Años(año['Año'], listaSemes, None)
                     arbolAVL.seek(arbolAVL.root, int(estudiante['Carnet'])).listAños = listaAños
+                else:
+                    print ("Carnet no encontrado en los estudiantes cargados en .txt, revisa tus datos por favor.")
+            return "¡Estudiantes cargados exitosamente!"
 
-        """   for estudiante in info['Estudiantes']:
-                if arbolAVL.seek(arbolAVL.root, estudiante['Carnet']):
-                    aux = arbolAVL.seek(arbolAVL.root, estudiante['Carnet']).listAños.cabeza
-                    print("**********************************")
-                    while (aux is not None):
-                        print("Estamos en año: " + aux.año)
-                        aux2 = aux.listaSemes.cabeza
-                        while aux2 is not None:
-                            print("Estamos en Semestre: " + aux2.nSemestre)
-                            aux2.arbolCursos.preOrden()
-                            aux2 = aux2.siguiente
-                        aux = aux.siguiente  """
-        return "¡Estudiantes cargados exitosamente!"
+
 
     elif tipo=="recordatorio":
         f = open(ruta, "r", encoding="utf-8")
@@ -116,6 +105,8 @@ def generarReportes():
                             return "¡Reporte de cursos de estudiante especifico generado con exito!"
                         aux2 = aux2.siguiente
                 aux = aux.siguiente
+        else:
+            return "Carnet no encontrado, revisa tus datos por favor."
 
     return ""
 

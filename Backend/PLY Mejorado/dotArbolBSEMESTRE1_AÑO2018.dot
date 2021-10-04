@@ -1,8 +1,0 @@
-digraph ArbolB{
-
-rankdir=TB;
-node[color="blue",style="rounded,filled",fillcolor=lightyellow, shape=record];
-
-Nodo107[label="<f0> |<f1>107\nMátematica Intermedia 1|<f2> |<f3>770\nIntroducción a la Programación y Computación 1|<f4> |<f5>960\nMatemática Cómputo 1|<f6>  ",group=0];
-
-}
