@@ -23,6 +23,13 @@ class List:
             print(aux.Carnet + " - " + aux.Nombre + "-" + aux.DPI + "-" + aux.Descripcion + "-" + aux.Correo)
             aux = aux.Next
 
+    def seek(self,abuscar):
+        aux = self.First
+        while aux is not None:
+            if int(aux.Carnet) == abuscar:
+                return aux
+            aux=aux.siguiente
+        return None
 
 
     def insertValue(self, carnet, dpi, nombre, carrera, password, creditos, edad, correo, descripcion, materia, fecha, hora, estado):

@@ -277,7 +277,7 @@ class matrizD:
             aux = cabecera.derecha
             while aux is not None:
                 print("Valor:", aux.listadTareas, "X:", aux.x, "Y:", aux.y)
-                cadena += "Node" + str(aux.x) +"_"+str(aux.y)+"[label=\"" + aux.listadTareas+ "\",group=" + str(aux.x + 1) + "];\n"
+                cadena += "Node" + str(aux.x) +"_"+str(aux.y)+"[label=\"" + aux.listadTareas.tamaño+ "\",group=" + str(aux.x + 1) + "];\n"
                 aux = aux.derecha
             cabecera = cabecera.siguiente
 
