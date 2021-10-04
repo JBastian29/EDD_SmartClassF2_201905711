@@ -161,8 +161,12 @@ def manualEstudiante():
         else:
             return "Estudiante no encontrado, revisa tus datos por favor."
 
-
-
+@app.route('/cursosPensum',methods=['POST'])
+def manualCursosPensum():
+    arregloCursos = request.json['Cursos']
+    for i in arregloCursos:
+        BtreeCursosGene.insertarDatos(int(i['Codigo']),i['Nombre'],int(i['Creditos']),i['Prerequisitos'],str(i['Obligatorio']))
+    return "¡Curso agregado con exito al arbol B general de cursos!"
 
 
 
