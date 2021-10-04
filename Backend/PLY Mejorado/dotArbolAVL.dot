@@ -1,0 +1,8 @@
+digraph G{
+node[color="blue",style="rounded,filled",fillcolor=lightyellow, shape=record];
+node67178472[label="<f0>|<f1> Carnet: 201822186\nNombre: Eloisa Rincón\nCarrera: Ingenieria Civil|<f2>"];
+node67178448[label="<f0>|<f1>Carnet: 201501786\nNombre: Juan Curiel\nCarrera: Ingenieria Industrial|<f2>"];
+node67178472:f0->node67178448:<f1>
+node67178424[label="<f0>|<f1>Carnet: 201901425\nNombre: Alvin Huckett\nCarrera: Ingeniería en Ciencias y Sistemas|<f2>"];
+node67178472:f2->node67178424:<f1>
+}

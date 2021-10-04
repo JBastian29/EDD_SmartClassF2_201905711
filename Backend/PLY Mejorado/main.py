@@ -4,7 +4,7 @@ import time
 import EDD.avl
 from analyzers.Syntactic import parser
 from analyzers.Syntactic import user_list, task_list
-from flask import Flask, request
+from flask import Flask, json, request, jsonify
 from EDD.avl import AVL
 from EDD.ListaDobleGeneral import listaDoble
 from EDD.ArbolB.ArbolB import arbolB
@@ -21,7 +21,7 @@ f.close()
 parser.parse(mensaje)
 aux = user_list.First
 while aux is not None:
-    arbolAVL.insert(int(aux.Carnet), aux.DPI, aux.Nombre, aux.Carrera, aux.Correo, aux.Password, int(aux.Creditos), aux.Edad,None)
+    arbolAVL.insert(int(aux.Carnet), aux.DPI, aux.Nombre, aux.Carrera, aux.Correo, aux.Password, int(aux.Creditos), int(aux.Edad),None)
     aux = aux.Next
 #arbolAVL.preorden()
 
@@ -109,6 +109,62 @@ def generarReportes():
             return "Carnet no encontrado, revisa tus datos por favor."
 
     return ""
+
+@app.route('/estudiante',methods=['GET','POST','PUT'])
+def manualEstudiante():
+    if request.method == 'POST':
+        carnet = request.json['carnet']
+        dpi = request.json['DPI']
+        nombre = request.json["nombre"]
+        carrera = request.json["carrera"]
+        correo = request.json["correo"]
+        passw = request.json["password"]
+        creditos = request.json["creditos"]
+        edad = request.json["edad"]
+        arbolAVL.insert(int(carnet),dpi,nombre,carrera,correo,passw,int(creditos),int(edad))
+        return "¡Estudiante agregado de manera manual exitosamente!"
+    elif request.method == 'GET':
+        carnet = request.json['carnet']
+        encontrado=arbolAVL.seek(arbolAVL.root,int(carnet))
+        if encontrado:
+            return jsonify({
+                'carnet':encontrado.nCarnet,
+                'DPI':encontrado.dpi,
+                'nombre': encontrado.nombre,
+                'carrera': encontrado.carrera,
+                'correo': encontrado.correo,
+                'password': encontrado.password,
+                'creditos': encontrado.creditos,
+                'edad': encontrado.edad
+            })
+        else:
+            return "Estudiante no encontrado, revisa tus datos por favor."
+    else:
+        carnet = request.json['carnet']
+        dpi = request.json['DPI']
+        nombre = request.json["nombre"]
+        carrera = request.json["carrera"]
+        correo = request.json["correo"]
+        passw = request.json["password"]
+        creditos = request.json["creditos"]
+        edad = request.json["edad"]
+        if arbolAVL.seek(arbolAVL.root, int(carnet)):
+            arbolAVL.seek(arbolAVL.root, int(carnet)).nCarnet = int(carnet)
+            arbolAVL.seek(arbolAVL.root,int(carnet)).dpi=dpi
+            arbolAVL.seek(arbolAVL.root, int(carnet)).nombre = nombre
+            arbolAVL.seek(arbolAVL.root, int(carnet)).carrera = carrera
+            arbolAVL.seek(arbolAVL.root, int(carnet)).correo = correo
+            arbolAVL.seek(arbolAVL.root, int(carnet)).password = passw
+            arbolAVL.seek(arbolAVL.root, int(carnet)).creditos = int(creditos)
+            arbolAVL.seek(arbolAVL.root, int(carnet)).edad = int(edad)
+            return "¡Estudiante actualizado con exito!"
+        else:
+            return "Estudiante no encontrado, revisa tus datos por favor."
+
+
+
+
+
 
 @app.route ('/prueba')
 def canche():
