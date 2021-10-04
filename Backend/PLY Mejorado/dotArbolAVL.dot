@@ -1,8 +1,0 @@
-digraph G{
-node[color="blue",style="rounded,filled",fillcolor=lightyellow, shape=record];
-node65015784[label="<f0>|<f1> Carnet: 201822186\nNombre: Eloisa Rincón\nCarrera: Ingenieria Civil|<f2>"];
-node65015760[label="<f0>|<f1>Carnet: 201501786\nNombre: Juan Curiel\nCarrera: Ingenieria Industrial|<f2>"];
-node65015784:f0->node65015760:<f1>
-node65015736[label="<f0>|<f1>Carnet: 201901425\nNombre: Emilia Miramontes\nCarrera: Ingenieria en Ciencias y Sistemas|<f2>"];
-node65015784:f2->node65015736:<f1>
-}

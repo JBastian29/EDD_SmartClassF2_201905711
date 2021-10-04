@@ -48,23 +48,21 @@ def carga():
                     for año in estudiante['Años']:
                         print("Estamos en año: " + año['Año'])
                         listaSemes = listaDoble()
-                        listaMeses = listaDoble()
+                        #listaMeses = listaDoble()
 
                         for semes in año['Semestres']:
-                            matrizDx = matrizD()
+                            #matrizDx = matrizD()
                             BtreeCursosEstu = arbolB()
-                            listaTareas=listaDoble()
+                            #listaTareas=listaDoble()
                             print("Estamos en semestre: " + semes['Semestre'])
                             for cursos in semes['Cursos']:
                                 BtreeCursosEstu.insertarDatos(int(cursos['Codigo']),cursos['Nombre'],cursos['Creditos'],cursos['Prerequisitos'],cursos['Obligatorio'])
-                                aux2 = task_list.First
+                                """aux2 = task_list.First
                                 while aux2 is not None:
                                     if int(aux2.Carnet) == int(estudiante['Carnet']):
                                         listaTareas.add_Tareas(int(aux2.Carnet),aux2.Nombre,aux2.Descripcion,aux2.Materia,aux2.Fecha,aux2.Hora,aux2.Estado)
-                                    matrizDx.insertar(listaTareas,aux2.Fecha[0:2],aux2.Hora)
-                                    aux2=aux2.Next
-
-
+                                    aux2 = aux2.Next
+                                matrizDx.insertar(listaTareas,aux2.Fecha[0:2],aux2.Hora)"""
                             print("Se va agregar en semestre: "+ str(semes['Semestre']))
                             listaSemes.add_Semestres(semes['Semestre'], BtreeCursosEstu)
                         listaAños.add_Años(año['Año'], listaSemes, None)
